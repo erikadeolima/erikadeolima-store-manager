@@ -10,7 +10,13 @@ async function consultById(id) {
   return product;
 }
 
+async function insert({ name }) {
+  const product = await productsModel.insert({ name });
+  return product;
+}
+
 module.exports = {
   consult,
   consultById,
+  insert,
 };
