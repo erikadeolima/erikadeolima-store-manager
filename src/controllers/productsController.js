@@ -1,5 +1,5 @@
 const express = require('express');
-// const { productSchema } = require('../middlewares/productsMiddlewares');
+const productMiddleware = require('../middlewares/productsMiddlewares');
 const productsService = require('../services/productsService');
 
 const productsController = express.Router();
@@ -21,19 +21,11 @@ productsController.get('/:id', async (req, res) => {
   return res.status(200).json(product);
 });
 
-productsController.post('/', async (req, res) => {
+productsController.post('/', productMiddleware, async (req, res) => {
   const { name } = req.body;
 
   const product = await productsService.insert({ name });
 
-  if (!name) {
-    return res.status(400).json({ message: '"name" is required' });
-  }
-  if (name.length < 5) {
-    return res.status(422).json({
-      message: '"name" length must be at least 5 characters long',
-    });
-  }
   return res.status(201).json(product);
 });
 
