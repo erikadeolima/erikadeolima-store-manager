@@ -1,4 +1,4 @@
-const dateTime = require('node-datetime');
+// const dateTime = require('node-datetime');
 const connection = require('./connection');
 
 /* const saleIdInsert = async () => {
@@ -11,10 +11,10 @@ const connection = require('./connection');
 }; */
 
 const insert = async (saleInfo) => {
-  const dt = dateTime.create().format('Y-m-d H:M:S');
+  // const dt = dateTime.create().format('Y-m-d H:M:S');
   const queryToSale = `INSERT INTO StoreManager.sales 
-    (date) VALUES (?)`;
-  const saleId = await connection.execute(queryToSale, [dt]);
+    (date) VALUES (NOW())`;
+  const saleId = await connection.execute(queryToSale);
   const id = saleId[0].insertId;
   // const id = await saleIdInsert();
   const queryToProducts = `INSERT INTO StoreManager.sales_products
