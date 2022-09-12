@@ -9,7 +9,6 @@ function salesMiddleware(req, res, next) {
     } else {
     res.status(422).json({ message: validate.error.details[0].message });
     }
-   console.log(validate.error);
   } else {
     next();
   }

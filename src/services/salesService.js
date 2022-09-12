@@ -15,7 +15,6 @@ async function insert(saleInfo) {
   const verification = await Promise.all(
     saleInfo.map(({ productId }) => productsModel.consultById(productId)),
   );
-  console.log(verification);
   const isInvalid = verification.some((product) => !product[0]);
   if (isInvalid) {
     return undefined;
