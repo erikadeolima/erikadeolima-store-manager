@@ -4,7 +4,7 @@ const salesService = require('../services/salesService');
 
 const salesController = express.Router();
 
-salesController.get('/', async (req, res) => {
+/* salesController.get('/', async (req, res) => {
   const sales = await salesService.consult();
   if (sales === undefined) {
     res.status(404).json({ message: 'Sale not found' });
@@ -20,7 +20,7 @@ salesController.get('/:id', async (req, res) => {
   }
   console.log(sale);
   return res.status(200).json(sale);
-});
+}); */
 
 salesController.post('/', salesMiddleware, async (req, res) => {
   const saleInfo = req.body;

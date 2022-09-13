@@ -1,7 +1,7 @@
 // const dateTime = require('node-datetime');
 const connection = require('./connection');
 
-const consult = async () => {
+/* const consult = async () => {
   const query = `SELECT 
                 s.id AS saleId,
                 sp.product_id AS productId,
@@ -25,7 +25,7 @@ const consultById = async (id) => {
   const [saleListById] = await connection.execute(query, [id]);
   console.log(saleListById);
   return saleListById;
-};
+}; */
 
 /* const saleIdInsert = async () => {
   const dt = dateTime.create().format('Y-m-d H:M:S');
@@ -57,6 +57,6 @@ const insert = async (saleInfo) => {
 
 module.exports = {
   insert,
-  consult,
-  consultById,
+  /* consult,
+  consultById, */
 };
