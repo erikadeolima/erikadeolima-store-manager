@@ -23,7 +23,6 @@ const insert = async ({ name }) => {
 
 module.exports = {
   consult,
-  consultProductId,
   consultById,
   insert,
 };
