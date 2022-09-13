@@ -10,7 +10,7 @@ const consult = async () => {
                 RIGHT JOIN sales_products as sp ON s.id = sp.sale_id
                 ORDER BY saleId, productId`;
   const [saleList] = await connection.execute(query);
-  return saleList;
+  return saleList.length !== 0 ? saleList : undefined;
 };
 
 const consultById = async (id) => {
@@ -22,7 +22,7 @@ const consultById = async (id) => {
                 WHERE id=?
                 ORDER BY productId`;
   const [saleListById] = await connection.execute(query, [id]);
-  return saleListById;
+  return saleListById.length !== 0 ? saleListById : undefined;
 };
 
 /* const saleIdInsert = async () => {

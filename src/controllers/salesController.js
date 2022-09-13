@@ -18,7 +18,7 @@ salesController.get('/:id', async (req, res) => {
   const sale = await salesService.consultById(id);
   console.log('sale id :', sale);
   
-  if (sale === []) {
+  if (sale === undefined) {
     return res.status(404).json({ message: 'Sale not found' });
   }
   return res.status(200).json(sale);
