@@ -10,7 +10,6 @@ const consult = async () => {
                 RIGHT JOIN sales_products as sp ON s.id = sp.sale_id
                 ORDER BY saleId, productId`;
   const [saleList] = await connection.execute(query);
-  console.log(saleList);
   return saleList;
 };
 
@@ -23,7 +22,6 @@ const consultById = async (id) => {
                 WHERE id=?
                 ORDER BY productId`;
   const [saleListById] = await connection.execute(query, [id]);
-  console.log(saleListById);
   return saleListById;
 };
 

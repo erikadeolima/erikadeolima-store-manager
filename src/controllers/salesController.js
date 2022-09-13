@@ -6,6 +6,7 @@ const salesController = express.Router();
 
 salesController.get('/', async (req, res) => {
   const sales = await salesService.consult();
+  console.log('all sale is :', sales);
   if (sales === undefined) {
     res.status(404).json({ message: 'Sale not found' });
   }
@@ -15,10 +16,11 @@ salesController.get('/', async (req, res) => {
 salesController.get('/:id', async (req, res) => {
   const { id } = req.params;
   const sale = await salesService.consultById(id);
-  if (sale === undefined) {
+  console.log('sale id :', sale);
+  
+  if (sale === []) {
     return res.status(404).json({ message: 'Sale not found' });
   }
-  console.log(sale);
   return res.status(200).json(sale);
 });
 
