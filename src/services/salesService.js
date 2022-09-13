@@ -1,7 +1,7 @@
 const salesModel = require('../models/salesModel');
 const productsModel = require('../models/productsModel');
 
-/* async function consult() {
+async function consult() {
   const sales = await salesModel.consult();
   return sales;
 }
@@ -9,7 +9,7 @@ const productsModel = require('../models/productsModel');
 async function consultById(id) {
   const sales = await salesModel.consultById(id);
   return sales;
-} */
+}
 
 async function insert(saleInfo) {
   const verification = await Promise.all(
@@ -24,7 +24,7 @@ async function insert(saleInfo) {
 }
 
 module.exports = {
-/*   consult,
-  consultById, */
+  consult,
+  consultById,
   insert,
 };
