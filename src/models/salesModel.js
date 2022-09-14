@@ -22,7 +22,7 @@ const consultById = async (id) => {
                 WHERE id=?
                 ORDER BY productId`;
   const [saleListById] = await connection.execute(query, [id]);
-  return saleListById.length !== 0 ? saleListById : undefined;
+  return saleListById;
 };
 
 /* const saleIdInsert = async () => {

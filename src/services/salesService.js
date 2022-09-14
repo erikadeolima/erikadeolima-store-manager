@@ -8,7 +8,7 @@ async function consult() {
 
 async function consultById(id) {
   const sales = await salesModel.consultById(id);
-    return sales !== [] ? sales : undefined;
+  return sales.length !== 0 ? sales : undefined;
 }
 
 async function insert(saleInfo) {

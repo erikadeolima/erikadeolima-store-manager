@@ -15,8 +15,14 @@ async function insert({ name }) {
   return product;
 }
 
+async function edit(id, name) {
+  const product = await productsModel.edit(id, name);
+  return product.changedRows < 1 ? undefined : { id, name };
+}
+
 module.exports = {
   consult,
   consultById,
   insert,
+  edit,
 };
