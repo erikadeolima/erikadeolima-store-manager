@@ -4,17 +4,6 @@ const productsService = require('../services/productsService');
 
 const productsController = express.Router();
 
-productsController.put('/:id', productMiddleware, async (req, res) => {
-  const { id } = req.params;
-  const { name } = req.body;
-  const product = await productsService.edit(id, name);
-  console.log('controller', product);
-  if (product === undefined) {
-    res.status(404).json({ message: 'Product not found' });
-  }
-  return res.status(200).json(product);
-});
-
 productsController.get('/', async (req, res) => {
   const products = await productsService.consult();
   if (products === undefined) {
@@ -38,6 +27,26 @@ productsController.post('/', productMiddleware, async (req, res) => {
   const product = await productsService.insert({ name });
 
   return res.status(201).json(product);
+});
+
+productsController.put('/:id', productMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const product = await productsService.edit(id, name);
+  console.log('controller', product);
+  if (product === undefined) {
+    res.status(404).json({ message: 'Product not found' });
+  }
+  return res.status(200).json(product);
+});
+
+productsController.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  const product = await productsService.remove(id);
+  if (product === undefined) {
+    res.status(404).json({ message: 'Product not found' });
+  }
+  return res.status(204).end();
 });
 
 module.exports = productsController;

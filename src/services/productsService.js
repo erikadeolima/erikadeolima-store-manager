@@ -20,9 +20,15 @@ async function edit(id, name) {
   return product.changedRows < 1 ? undefined : { id, name };
 }
 
+async function remove(id) {
+  const product = await productsModel.remove(id);
+  return product.affectedRows < 1 ? undefined : { id };
+}
+
 module.exports = {
   consult,
   consultById,
   insert,
   edit,
+  remove,
 };
