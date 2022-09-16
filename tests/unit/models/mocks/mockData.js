@@ -28,6 +28,41 @@ const productUpdateExistsNameBody = { name: 'Martelo de Thor' };
 const productSearchNameResponse = [{ id: 1, name: 'Martelo de Thor' }];
 
 /* -------------------------- Sales --------------------------*/
+const allSalesResponse = [
+  {
+    "saleId": 1,
+    "productId": 1,
+    "quantity": 5,
+    "date": "2022-09-16T14:45:08.000Z"
+  },
+  {
+    "saleId": 1,
+    "productId": 2,
+    "quantity": 10,
+    "date": "2022-09-16T14:45:08.000Z"
+  },
+  {
+    "saleId": 2,
+    "productId": 3,
+    "quantity": 15,
+    "date": "2022-09-16T14:45:08.000Z"
+  }
+];
+const saleByIdResponse = [
+  {
+    "productId": 1,
+    "quantity": 5,
+    "date": "2022-09-16T14:45:08.000Z"
+  },
+  {
+    "productId": 2,
+    "quantity": 10,
+    "date": "2022-09-16T14:45:08.000Z"
+  }
+];
+const saleNotFound = {
+  "message": "Sale not found"
+};
 const wrongSaleNotProductIdBody = [{ quantity: 1 }];
 const wrongSaleNotQuantityBody = [{ productId: 1 }];
 const nonexistentProductIdBody = [{ productId: 9999, quantity: 1 }];
@@ -75,4 +110,7 @@ module.exports = {
   productNotFoundResponse,
   productUpdateResponse,
   allProductsAfterCreateResponse,
+  allSalesResponse,
+  saleByIdResponse,
+  saleNotFound,
 };

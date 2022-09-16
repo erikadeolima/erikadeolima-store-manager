@@ -6,32 +6,17 @@ const {
   consultById,
   insert,
   edit,
-  remove,
 } = require('../../../src/models/productsModel');
 const connection = require('../../../src/models/connection');
 
 const {
-  wrongProductBody,
-  wrongSizeProductBody,
   rightProductBody,
   productByIdResponse,
   allProductsResponse,
   productCreateResponse,
   productUpdateBody,
-  productUpdateExistsNameBody,
-  productSearchNameResponse,
-  wrongSaleNotProductIdBody,
-  wrongSaleNotQuantityBody,
-  nonexistentProductIdBody,
-  nonexistentProductIdBody2,
-  wrongZeroQuantityBody,
-  wrongZeroNegativeBody,
-  otherProductIdSaleBody,
-  rightSaleBody,
-  saleCreateResponse,
   productNotFoundResponse,
   productUpdateResponse,
-  allProductsAfterCreateResponse,
 } = require('./mocks/mockData');
 
 describe('Testes de unidade da camada model', function () {
