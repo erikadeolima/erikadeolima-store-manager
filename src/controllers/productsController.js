@@ -25,7 +25,7 @@ productsController.post('/', productMiddleware, async (req, res) => {
   const { name } = req.body;
 
   const product = await productsService.insert({ name });
-
+  
   return res.status(201).json(product);
 });
 
@@ -33,7 +33,6 @@ productsController.put('/:id', productMiddleware, async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
   const product = await productsService.edit(id, name);
-  console.log('controller', product);
   if (product === undefined) {
     res.status(404).json({ message: 'Product not found' });
   }
