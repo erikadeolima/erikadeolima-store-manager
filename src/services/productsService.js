@@ -17,12 +17,12 @@ async function insert({ name }) {
 
 async function edit(id, name) {
   const product = await productsModel.edit(id, name);
-  return product.changedRows < 1 ? undefined : { id, name };
+  return product;
 }
 
 async function remove(id) {
   const product = await productsModel.remove(id);
-  return product.affectedRows < 1 ? undefined : { id };
+  return product;
 }
 
 module.exports = {

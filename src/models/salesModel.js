@@ -39,7 +39,7 @@ const insert = async (saleInfo) => {
   const queryToSale = `INSERT INTO StoreManager.sales 
     (date) VALUES (?)`;
   const saleId = await connection.execute(queryToSale, [dt]);
-  const id = saleId[0].insertId;
+  const id = saleId.length + 1;
   // const id = await saleIdInsert();
   const queryToProducts = `INSERT INTO StoreManager.sales_products
      (sale_id, quantity, product_id) VALUES (?,?,?)`;

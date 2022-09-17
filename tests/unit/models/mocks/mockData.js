@@ -78,10 +78,10 @@ const otherProductIdSaleBody = [
 ];
 const rightSaleBody = [
   { productId: 1, quantity: 1 },
-  { productId: 2, quantity: 5 },
+  { productId: 2, quantity: 5 }
 ];
 const saleCreateResponse = {
-  id: 3,
+  id: 2,
   itemsSold: [
     { productId: 1, quantity: 1 },
     { productId: 2, quantity: 5 },

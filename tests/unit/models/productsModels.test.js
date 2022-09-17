@@ -6,6 +6,7 @@ const {
   consultById,
   insert,
   edit,
+  remove,
 } = require('../../../src/models/productsModel');
 const connection = require('../../../src/models/connection');
 
@@ -19,7 +20,7 @@ const {
   productUpdateResponse,
 } = require('./mocks/mockData');
 
-describe('Testes de unidade da camada model', function () {
+describe('Testes de unidade da camada model na rota /products', function () {
   afterEach(sinon.restore);
   it('1-Testando retorno rota GET "/products', async function () {
     sinon.stub(connection, 'execute').resolves([allProductsResponse]);
@@ -69,32 +70,15 @@ describe('Testes de unidade da camada model', function () {
   it('5-Testa se é possível editar um produto no db ', async function () {
     sinon.stub(connection, 'execute').resolves([productUpdateResponse]);
 
-    const result = await edit(productUpdateBody);
-    expect(result).to.equal(productUpdateResponse);
+    const result = await edit(1, productUpdateBody.name);
+    expect(result.id).to.equal(productUpdateResponse.id);
+    expect(result.name).to.equal(productUpdateResponse.name);
   });
-  /* 
-  Quero testar o metodo de remover, porém preciso inserir algo como um waitFor, pesquisar depois
-
-
   it('5-Testa se é possível deletar um produto no db ', async function () {
-    sinon.stub(connection, 'execute').resolves([allProductsResponse]);
+    sinon.stub(connection, 'execute').resolves([{id:1}]);
 
-    const create = await insert(rightProductBody);
-    expect(create).to.be.a('object');
-
-    const insertTest = await consult();
-    console.log(insertTest);
-    expect(insertTest).to.be.an('array');
-    expect(insertTest).to.have.lengthOf(4);
-    expect(insertTest).to.equal(allProductsAfterCreateResponse);
-
-    const removeItem = await remove(4);
-    expect(removeItem).to.be.a('object');
-
-
-    const result = await consult();
-    expect(result).to.be.an('array');
-    expect(result).to.have.lengthOf(3);
-    expect(result).to.equal(allProductsResponse);
-  }); */
+    const result = await remove(1);
+    
+    expect(result.id).to.be.equal(1);
+  });
 });

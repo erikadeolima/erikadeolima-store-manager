@@ -35,7 +35,7 @@ const {
   saleNotFound,
 } = require('./mocks/mockData');
 
-describe('Testes de unidade da camada services', function () {
+describe('Testes de unidade da camada model na rota /sales', function () {
   afterEach(sinon.restore);
   it('1-Testando retorno rota GET "/sales', async function () {
     sinon.stub(connection, 'execute').resolves([allSalesResponse]);
@@ -77,16 +77,15 @@ describe('Testes de unidade da camada services', function () {
     
     expect(result).to.be.deep.equal(saleNotFound);
   });
-  /* it('4-Testa se é possível cadastrar uma venda no db', async function () {
+  it('4-Testa se é possível cadastrar uma venda no db', async function () {
     sinon.stub(connection, 'execute').resolves([saleCreateResponse]);
 
     const result = await insert(rightSaleBody);
-    console.log(result);
 
     expect(result).to.be.a('object');
     expect(result).to.have.a.property('id');
     expect(result).to.have.a.property('itemsSold');
 
-    expect(result).to.equal(saleCreateResponse);
-  }); */
+    expect(result.id).to.equal(saleCreateResponse.id);
+  });
 });

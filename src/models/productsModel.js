@@ -25,13 +25,13 @@ const edit = async (id, name) => {
   /* const validation = await consultById(id); */
   const query = `UPDATE StoreManager.products SET name = '${name}' WHERE id = '${id}'`;
   const [product] = await connection.execute(query);
-  return product;
+  return product.changedRows < 1 ? undefined : { id, name };
 };
 
 const remove = async (id) => {
   const query = `DELETE FROM StoreManager.products WHERE id = '${id}'`;
   const [product] = await connection.execute(query);
-  return product;
+  return product.affectedRows < 1 ? undefined : { id };
 };
 
 module.exports = {
